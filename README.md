@@ -1,55 +1,112 @@
-## Bingo (Servidor Node.js)
+🎯 Bingo Backend API
 
-Servidor básico en Node.js usando Express y Mongoose.
+Backend del proyecto Bingo, desarrollado con Node.js, Express y MongoDB, que provee una API REST junto con comunicación en tiempo real mediante Socket.IO.
 
-Requisitos:
-- Node.js >= 18
-- MongoDB (local o remoto)
+Este servidor se encarga de la autenticación de usuarios, la gestión de datos del sistema y la comunicación en tiempo real entre clientes.
 
-Instalación y uso (PowerShell en Windows):
+🚀 Tecnologías utilizadas
+🧠 Lenguaje & Runtime
 
-1. Instalar dependencias
+Node.js (>= 18)
 
-   npm install
+JavaScript (ES Modules)
 
-2. (Opcional) Configurar la variable de entorno `MONGO_URI` para conectar a MongoDB remoto.
+🌐 Servidor & API
 
-   Recomendado: usar variables separadas para usuario/contraseña si la contraseña tiene caracteres especiales.
+Express 5
 
-   Opción A — pasar usuario/contraseña por separado (recomendado):
+Express Validator (validaciones)
 
-   # PowerShell (sesión actual)
-   $env:MONGO_URI = 'mongodb://190.228.131.42:27017/bingo'
-   $env:MONGO_USER = 'bingo_usario'
-   $env:MONGO_PASS = 'TU_CONTRASENA_AQUI'
-   npm run dev
+CORS
 
-   Opción B — usar URI completa (codifica caracteres especiales en la contraseña):
+Method Override
 
-   # Si la contraseña contiene '%', '@', '/', etc. debes URL-encodearla. Ej:
-   # contraseña literal: %123Bingo2024 -> encoded: %25123Bingo2024
-   $env:MONGO_URI = 'mongodb://bingo_usario:%25123Bingo2024@190.228.131.42:27017/bingo?authSource=bingo'; npm run dev
+🗄️ Base de datos
 
-3. Ejecutar en desarrollo (con nodemon):
+MongoDB
 
-   npm run dev
+Mongoose (ODM)
 
-4. Ejecutar en producción:
+🔐 Seguridad & Autenticación
 
-   npm start
+JWT (jsonwebtoken) – autenticación basada en tokens
 
-Endpoints:
-- GET / -> estado del servidor (retorna JSON: { ok: true, message: 'Servidor Bingo funcionando' })
+bcryptjs – hash de contraseñas
 
-Probar el endpoint raíz (PowerShell):
+🔌 Tiempo real
 
-   Invoke-RestMethod http://localhost:3000/
+Socket.IO – comunicación bidireccional en tiempo real
 
-Notas:
-- El archivo principal es `src/server.js`. Si usas MongoDB local, la conexión por defecto es `mongodb://localhost:27017/bingo`.
-- Para desarrollo se incluye `nodemon` como dependencia de desarrollo.
+⚙️ Configuración & Entorno
 
-Problemas de seguridad detectados por npm:
-- Al instalar dependencias puede aparecer `npm audit` con vulnerabilidades; revisa y arregla según las necesidades del proyecto.
+dotenv – variables de entorno
 
-Si quieres, puedo añadir rutas de ejemplo y modelos de Mongoose (usuarios, partidas) como siguiente paso.
+PM2 – gestión de procesos en producción
+
+🛠️ Desarrollo
+
+Nodemon – recarga automática en desarrollo
+
+📁 Estructura general del proyecto
+
+bingoBackend/
+├── src/
+│   ├── config/        # Configuración (DB, entorno)
+│   ├── controllers/  # Controladores
+│   ├── routes/       # Rutas de la API
+│   ├── models/       # Modelos Mongoose
+│   ├── middlewares/  # Middlewares
+│   └── server.js     # Punto de entrada del servidor
+├── .env              # Variables de entorno
+├── package.json
+└── ecosystem.config.cjs
+
+🔐 Variables de entorno
+
+Ejemplo de archivo .env:
+
+PORT=4000
+MONGO_URI=mongodb://127.0.0.1:27017/bingo
+JWT_SECRET=tu_clave_secreta
+JWT_EXPIRES_IN=4h
+NODE_ENV=production
+
+▶️ Scripts disponibles
+Desarrollo
+npm run dev
+
+Producción
+npm start
+
+
+Con PM2:
+
+pm2 start ecosystem.config.cjs
+
+🔌 Socket.IO
+
+El servidor expone Socket.IO para eventos en tiempo real, permitiendo:
+
+Conexión y desconexión de clientes
+
+Comunicación bidireccional
+
+Integración directa con el frontend en React
+
+🧩 Integración con el Frontend
+
+El backend está preparado para ser consumido por un frontend desarrollado con:
+
+React + Vite
+
+Socket.IO Client
+
+Axios
+
+Y se encuentra optimizado para funcionar detrás de Nginx como reverse proxy.
+
+📌 Estado del proyecto
+
+🚧 En desarrollo activo
+📦 Arquitectura modular y escalable
+⚡ Preparado para producción
