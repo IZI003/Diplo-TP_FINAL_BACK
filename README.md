@@ -50,16 +50,27 @@ Nodemon – recarga automática en desarrollo
 📁 Estructura general del proyecto
 
 bingoBackend/
+
 ├── src/
+
 │   ├── config/        # Configuración (DB, entorno)
+
 │   ├── controllers/  # Controladores
+
 │   ├── routes/       # Rutas de la API
+
 │   ├── models/       # Modelos Mongoose
+
 │   ├── middlewares/  # Middlewares
+
 │   └── server.js     # Punto de entrada del servidor
+
 ├── .env              # Variables de entorno
+
 ├── package.json
+
 └── ecosystem.config.cjs
+
 
 🔐 Variables de entorno
 
