@@ -11,6 +11,7 @@ Node.js (>= 18)
 
 JavaScript (ES Modules)
 
+
 🌐 Servidor & API
 
 Express 5
@@ -27,15 +28,18 @@ MongoDB
 
 Mongoose (ODM)
 
+
 🔐 Seguridad & Autenticación
 
 JWT (jsonwebtoken) – autenticación basada en tokens
 
 bcryptjs – hash de contraseñas
 
+
 🔌 Tiempo real
 
 Socket.IO – comunicación bidireccional en tiempo real
+
 
 ⚙️ Configuración & Entorno
 
@@ -43,9 +47,11 @@ dotenv – variables de entorno
 
 PM2 – gestión de procesos en producción
 
+
 🛠️ Desarrollo
 
 Nodemon – recarga automática en desarrollo
+
 
 📁 Estructura general del proyecto
 
@@ -103,6 +109,7 @@ Conexión y desconexión de clientes
 Comunicación bidireccional
 
 Integración directa con el frontend en React
+
 
 🧩 Integración con el Frontend
 
