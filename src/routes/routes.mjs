@@ -52,9 +52,9 @@ router.post("/api/bingo/seleccion", authMiddleware, guardarSeleccionController);
 router.get("/api/bingo/seleccion/:userId", authMiddleware, obtenerSeleccionController);
 router.delete("/api/bingo/seleccion/:userId", authMiddleware, eliminarSeleccionController);
 
-router.post("/api/users/", createUserController);            // POST /users
-router.get("/api/users/", listUsersController);              // GET /users?page=1&limit=20
-router.get("/api/users/:id", getUserController);             // GET /users/:id
+router.post("/api/users/", authMiddleware, createUserController);            // POST /users
+router.get("/api/users/", authMiddleware, listUsersController);              // GET /users?page=1&limit=20
+router.get("/api/users/:id", authMiddleware, getUserController);             // GET /users/:id
 router.put("/api/users/:id", authMiddleware, updateUserController);          // PUT /users/:id
 router.delete("/api/users/:id", authMiddleware, deleteUserController);       // DELETE /users/:id
 
@@ -63,12 +63,12 @@ router.post("/api/auth/register", registerController);                 // POST /
 
 
 
-router.post("/api/bolillero/sacar", sacarBolillaController);
+router.post("/api/bolillero/sacar", authMiddleware, esAdminDelGrupo, sacarBolillaController);
 router.get("/api/bolillero/estado/:grupoId", bolilleroController);
 
-router.post("/api/grupos", crearGrupoController);
-router.get("/api/grupos/:userId", obtenerGruposDeUsuarioController);
-router.put("/api/grupos/activar/:userId/:groupId", cambiarGrupoActivoController);
+router.post("/api/grupos", authMiddleware, crearGrupoController);
+router.get("/api/grupos/:userId", authMiddleware, obtenerGruposDeUsuarioController);
+router.put("/api/grupos/activar/:userId/:groupId", authMiddleware, cambiarGrupoActivoController);
 router.post("/api/grupos/:groupId/invitar", authMiddleware, esAdminDelGrupo, generarInvitacionController);
 
 // Listar usuarios del grupo (solo admin)

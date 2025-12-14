@@ -41,7 +41,16 @@ export async function getUsers({ page = 1, limit = 20 } = {}) {
 }
 
 export async function getUserById(id) {
-    return await User.findById(id).select("-passwordHash").lean();
+    const user = await User.findById(id)
+        .populate({
+            path: "grupoActivo",
+            populate: [
+                { path: "admin", select: "nombre email" },
+                { path: "usuarios", select: "nombre email" }
+            ],
+            strictPopulate: false
+        });
+    return user;// await User.findById(id).select("-passwordHash").lean();
 }
 
 export async function updateUser(id, payload) {
