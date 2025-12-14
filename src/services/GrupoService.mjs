@@ -101,8 +101,6 @@ export async function obtenerGruposDeUsuarioService(userId) {
     };
 }
 
-
-
 export async function generarInvitacionService(groupId) {
     const grupo = await Group.findById(groupId);
     if (!grupo) throw new Error("Grupo no encontrado " + groupId);
@@ -152,13 +150,9 @@ export async function unirseAGrupoService(userId, token) {
     return { ok: true, groupId };
 }
 
-export async function eliminarUsuarioDelGrupoService(adminId, userIdTarget, groupId) {
+export async function eliminarUsuarioDelGrupoService(userIdTarget, groupId) {
     const grupo = await Group.findById(groupId);
     if (!grupo) throw new Error("Grupo no encontrado");
-
-    if (String(grupo.admin) !== String(adminId)) {
-        throw new Error("No tienes permisos");
-    }
 
     // borrar del grupo
     grupo.usuarios = grupo.usuarios.filter(u => String(u) !== String(userIdTarget));

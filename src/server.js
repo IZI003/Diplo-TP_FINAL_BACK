@@ -53,17 +53,14 @@ const io = new Server(server, {
 setIO(io);
 
 io.on("connection", (socket) => {
-
-    console.log("🟢 Cliente conectado:", socket.id);
-
     // Unirse a un grupo
     socket.on("joinGroup", (groupId) => {
         socket.join(groupId);
-        console.log(`Jugador ${socket.id} se unió al grupo ${groupId}`);
     });
-
+    socket.on("leaveGroup", (groupId) => {
+        socket.leave(groupId);
+    });
     socket.on("disconnect", () => {
-        console.log("🔴 Cliente desconectado:", socket.id);
     });
 });
 

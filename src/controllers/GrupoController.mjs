@@ -35,7 +35,6 @@ export async function obtenerGruposDeUsuarioController(req, res) {
 
 export async function listarUsuariosGrupoController(req, res) {
     try {
-        // const adminId = req.user.id;        // viene del token / verifyToken
         const { groupId } = req.params;
 
         const usuarios = await listarUsuariosGrupoService(groupId);
@@ -48,10 +47,9 @@ export async function listarUsuariosGrupoController(req, res) {
 
 export async function eliminarUsuarioDelGrupoController(req, res) {
     try {
-        const adminId = req.user.id;
         const { groupId, userId } = req.params;
 
-        const data = await eliminarUsuarioDelGrupoService(adminId, userId, groupId);
+        const data = await eliminarUsuarioDelGrupoService(userId, groupId);
         res.json(data);
 
     } catch (error) {
