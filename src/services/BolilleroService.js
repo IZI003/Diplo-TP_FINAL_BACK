@@ -10,6 +10,10 @@ export async function sacarBolillaService(grupoId) {
         bolillero.activo = false;
         await bolillero.save();
 
+        io.to(grupoId).emit("bolillaGenerada", {
+            numero: bolillero.ultimoNumero,
+            numerosSalidos: bolillero.numerosSalidos
+        });
         io.to(grupoId).emit("estadoBolillero", {
             terminado: true,
             numerosSalidos: bolillero.numerosSalidos
@@ -44,7 +48,6 @@ export async function sacarBolillaService(grupoId) {
 }
 
 async function buscar(grupoId) {
-    // const gid = String(grupoId).replace("groupId=", "").trim();
 
     let bolillero = await Bolillero.findOne({ grupoId: grupoId });
 

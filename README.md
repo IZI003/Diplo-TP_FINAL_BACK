@@ -128,3 +128,6 @@ Y se encuentra optimizado para funcionar detrás de Nginx como reverse proxy.
 🚧 En desarrollo activo
 📦 Arquitectura modular y escalable
 ⚡ Preparado para producción
+
+
+En Produccion puedes ingresar a http://190.228.131.42:5173/

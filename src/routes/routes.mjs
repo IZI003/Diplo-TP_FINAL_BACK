@@ -63,7 +63,7 @@ router.post("/api/auth/register", registerController);                 // POST /
 
 
 
-router.post("/api/bolillero/sacar", authMiddleware, esAdminDelGrupo, sacarBolillaController);
+router.post("/api/bolillero/sacar/:groupId", authMiddleware, esAdminDelGrupo, sacarBolillaController);
 router.get("/api/bolillero/estado/:grupoId", bolilleroController);
 
 router.post("/api/grupos", authMiddleware, crearGrupoController);

@@ -2,7 +2,7 @@ import { bolilleroService, sacarBolillaService } from "../services/BolilleroServ
 
 export async function sacarBolillaController(req, res) {
     try {
-        const { groupId } = req.body;
+        const { groupId } = req.params;
 
         if (!groupId) {
             return res.status(400).json({ msg: "Falta grupoId" });
